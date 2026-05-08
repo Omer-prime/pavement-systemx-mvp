@@ -1,0 +1,24 @@
+services:
+  postgres:
+    image: postgis/postgis:17-3.5
+    container_name: systemx_pavement_postgis
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: systemx
+      POSTGRES_PASSWORD: systemx_password
+      POSTGRES_DB: systemx_pavement
+    ports:
+      - "5435:5432"
+    volumes:
+      - systemx_pgdata:/var/lib/postgresql/data
+      - ./infra/postgres/init.sql:/docker-entrypoint-initdb.d/001-init.sql:ro
+
+  redis:
+    image: redis:7-alpine
+    container_name: systemx_pavement_redis
+    restart: unless-stopped
+    ports:
+      - "6380:6379"
+
+volumes:
+  systemx_pgdata:

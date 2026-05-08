@@ -1,0 +1,21 @@
+{
+  "name": "pavement-systemx-mvp",
+  "private": true,
+  "version": "0.1.0",
+  "description": "MVP scaffold for AI-powered pavement rating map system with strong backend architecture.",
+  "packageManager": "pnpm@10.0.0",
+  "scripts": {
+    "dev": "node init && pnpm --parallel --filter @systemx/api --filter @systemx/web dev",
+    "dev:api": "node init && pnpm --filter @systemx/api dev",
+    "dev:web": "node init && pnpm --filter @systemx/web dev",
+    "build": "node init && pnpm --filter @systemx/api build && pnpm --filter @systemx/web build",
+    "db:up": "docker compose up -d postgres redis",
+    "db:down": "docker compose down",
+    "db:logs": "docker compose logs -f postgres redis"
+  },
+  "devDependencies": {
+    "dotenv": "^8.2.0",
+    "node-fetch": "^3.3.2",
+    "typescript": "^5.8.3"
+  }
+}
